@@ -1,0 +1,30 @@
+<table class="table table-striped">
+    <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Product</th>
+      <th scope="col">Price</th>
+      <th scope="col">Quantity</th>
+      <th scope="col">Add</th>
+      <th scope="col">Subtract</th>
+      <th scope="col">Remove</th>
+      <th scope="col">Total</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let product of products; index as i">
+      <th scope="row">{{ i + 1 }}</th>
+      <td>
+        {{ product.productName }}
+      </td>
+      <td>{{ product.price | number }}</td>
+      <td>{{ product.quantity | number }}</td>
+      <td><button (click)="addToCart(product.id)">+</button></td>
+      <td><button (click)="subtractFromCart(i)">-</button></td>
+      <td><button (click)="removeFromCart(i)">delete</button></td>
+      <td>{{ product.quantity * product.price | number }}</td>
+    </tr>
+    </tbody>
+  </table>
+
+  Total: {{cart.total}}
